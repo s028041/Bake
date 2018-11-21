@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:id="@+id/parent_layout">
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="2dp"-->
+        <!--android:background="@color/colorAccent"/>-->
+
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="100dp"
+
+
+        android:text="Timestamp"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tvPriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTimestamp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="31dp"
+        android:text="Priority"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tvTextLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTextPriority"
+        android:layout_alignStart="@+id/tvLatitude"
+        android:layout_marginStart="-110dp"
+        android:layout_marginTop="23dp"
+        android:text="Longitude:"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvLongitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="129dp"
+        android:layout_marginTop="110dp"
+        android:text="Longitude"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+
+    <TextView
+        android:id="@+id/tvTextLatitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTextPriority"
+        android:layout_alignStart="@+id/tvLatitude"
+        android:layout_marginStart="-110dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="-11dp"
+        android:layout_toStartOf="@+id/tvLatitude"
+        android:text="Latitude:"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvLatitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLongitude"
+        android:layout_alignStart="@+id/tvTimestamp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="3dp"
+        android:text="Latitude"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tvTextAltitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvAltitude"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-220dp"
+        android:text="Altitude:"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvAltitude"
+        android:layout_width="112dp"
+        android:layout_height="26dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="169dp"
+
+        android:text="Altitude"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tvTextAngle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAltitude"
+        android:layout_centerHorizontal="true"
+        android:text="Angle:"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvAngle"
+        android:layout_width="85dp"
+        android:layout_height="22dp"
+        android:layout_below="@+id/tvAltitude"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="25dp"
+        android:text="Angle"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tvTextSatellites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAngle"
+        android:layout_centerHorizontal="true"
+        android:text="Satellites:"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvSatellites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAngle"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="10dp"
+        android:text="Satellites"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tvTextKmh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvKmh"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-15dp"
+        android:text="Kmh:"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvKmh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kmh"
+        android:textColor="#000"
+        android:layout_margin="15dp"
+        android:layout_below="@+id/tvSatellites"
+        android:textSize="17sp"
+        />
+
+    <TextView
+        android:id="@+id/tvTextEventID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvEventID"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-15dp"
+        android:text="EventID:"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvEventID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EventID"
+        android:textColor="#000"
+        android:layout_margin="15dp"
+        android:layout_below="@+id/tvKmh"
+        android:textSize="17sp"
+        />
+
+    <TextView
+        android:id="@+id/tvTextElementCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEventID"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="-15dp"
+        android:text="Element Count:"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvElementCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEventID"
+        android:textColor="#000"
+        android:text="ElementCount"
+        android:textSize="17sp"
+        />
+
+    <TextView
+        android:id="@+id/tvTextPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="55dp"
+        android:text="Priority:"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTextTimestamp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvTimestamp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="-12dp"
+        android:text="Timestamp:"
+        android:textColor="#000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+
+
+
+
+
+    <!--<TextView-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:layout_below="@+id/tvTimestamp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="2dp"-->
+        <!--android:background="@color/colorPrimary"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/tvPriority"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/tvTimestamp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="Priority"-->
+        <!--/>-->
+
+</RelativeLayout>
