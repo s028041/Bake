@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.dominyko.avl.Models.GPS.AVL.AVLRecord;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -21,6 +22,7 @@ public class RecyclerViewAdaper extends RecyclerView.Adapter<RecyclerViewAdaper.
     private List<AVLRecord> mRecords;
     private LayoutInflater mLayoutInflater;
     private LocationListRecyclerClickListener mClickListener;
+    LatLng markerLocation;
 
     public RecyclerViewAdaper(Context context, List<AVLRecord> mRecords, LocationListRecyclerClickListener clickListener) {
         mClickListener = clickListener;
@@ -33,7 +35,7 @@ public class RecyclerViewAdaper extends RecyclerView.Adapter<RecyclerViewAdaper.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_record, parent, false);
         ViewHolder holder = new ViewHolder(view, mClickListener); // pas mClickListener interface to viewholder adapter
         return holder;
     }
@@ -44,36 +46,38 @@ public class RecyclerViewAdaper extends RecyclerView.Adapter<RecyclerViewAdaper.
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
         String dateInString = simpleDateFormat.format(mRecords.get(position).getRecordHeader().getTimestamp());
-        holder.textTimestamp.setText(String.valueOf("Timestamp:"));
+       // holder.textTimestamp.setText(String.valueOf("Timestamp:"));
         holder.timestamp.setText(dateInString);
 
-        holder.textPriority.setText(String.valueOf("Priority:"));
+       // holder.textPriority.setText(String.valueOf("Priority:"));
         holder.priority.setText(String.valueOf(mRecords.get(position).getRecordHeader().getRecordPriority()));
 
-        holder.textLongitude.setText(String.valueOf("Longitude:"));
+       // holder.textLongitude.setText(String.valueOf("Longitude:"));
         holder.longitude.setText(String.valueOf(mRecords.get(position).getRecordGPS_elements().getLongitude()));
 
-        holder.textLatitude.setText(String.valueOf("Latidude:"));
+       // holder.textLatitude.setText(String.valueOf("Latidude:"));
         holder.latitude.setText(String.valueOf(mRecords.get(position).getRecordGPS_elements().getLatitude()));
-
-        holder.textAltitude.setText(String.valueOf("Altitude:"));
+//
+       // holder.textAltitude.setText(String.valueOf("Altitude:"));
         holder.altitude.setText(String.valueOf(mRecords.get(position).getRecordGPS_elements().getAltitude()));
 
-        holder.textAngle.setText(String.valueOf("Angle:"));
+      //  holder.textAngle.setText(String.valueOf("Angle:"));
         holder.angle.setText(String.valueOf(mRecords.get(position).getRecordGPS_elements().getAngle()));
 
-        holder.textSatellites.setText(String.valueOf("Satellites:"));
+      //  holder.textSatellites.setText(String.valueOf("Satellites:"));
         holder.satellites.setText(String.valueOf(mRecords.get(position).getRecordGPS_elements().getSatellites()));
 
-        holder.textKmh.setText(String.valueOf("Kmh:"));
+      //  holder.textKmh.setText(String.valueOf("Kmh:"));
         holder.kmh.setText(String.valueOf(mRecords.get(position).getRecordGPS_elements().getKmh()));
 
-        holder.textEventID.setText(String.valueOf("EventID:"));
+      //  holder.textEventID.setText(String.valueOf("EventID:"));
         holder.eventid.setText(String.valueOf(mRecords.get(position).getRecordIO_elements().getEventID()));
 
-        holder.textElementCount.setText(String.valueOf("Element Count:"));
+      //  holder.textElementCount.setText(String.valueOf("Element Count:"));
         holder.elemCount.setText(String.valueOf(mRecords.get(position).getRecordIO_elements().getElementCount()));
 
+        markerLocation = buildCordinate(String.valueOf(mRecords.get(position).getRecordGPS_elements().getLatitude()),
+                String.valueOf(mRecords.get(position).getRecordGPS_elements().getLongitude()));
         //TODO Pirmas bandymas X
 
 //        Intent intent = new Intent(mContext, MapsActivity.class);
@@ -92,6 +96,20 @@ public class RecyclerViewAdaper extends RecyclerView.Adapter<RecyclerViewAdaper.
 //       holder.latitude.setText(String.valueOf(mRecords.get(position).getRecordGPS_elements().getLatitude()));
 
 
+    }
+
+    private LatLng buildCordinate(String lat, String lng){
+        if(lat != null && lat != "" && lng != null && lng != ""){
+            StringBuilder latStringBuilder = new StringBuilder(lat);
+            StringBuilder lngStringBuilder = new StringBuilder(lng);
+
+            latStringBuilder.insert(2,".");
+            lngStringBuilder.insert(2,".");
+
+            return new LatLng(Float.valueOf(latStringBuilder.toString()), Float.valueOf(lngStringBuilder.toString()));
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -113,16 +131,16 @@ public class RecyclerViewAdaper extends RecyclerView.Adapter<RecyclerViewAdaper.
         TextView kmh;
         TextView eventid;
         TextView elemCount;
-        TextView textPriority;
-        TextView textTimestamp;
-        TextView textLongitude;
-        TextView textLatitude;
-        TextView textAltitude;
-        TextView textAngle;
-        TextView textSatellites;
-        TextView textKmh;
-        TextView textEventID;
-        TextView textElementCount;
+//        TextView textPriority;
+//        TextView textTimestamp;
+//        TextView textLongitude;
+//        TextView textLatitude;
+//        TextView textAltitude;
+//        TextView textAngle;
+//        TextView textSatellites;
+//        TextView textKmh;
+//        TextView textEventID;
+//        TextView textElementCount;
 
 
 
@@ -131,51 +149,50 @@ public class RecyclerViewAdaper extends RecyclerView.Adapter<RecyclerViewAdaper.
             super(itemView);
 
 
-            textTimestamp = itemView.findViewById(R.id.tvTextTimestamp);
+           // textTimestamp = itemView.findViewById(R.id.tvTextTimestamp);
             timestamp = itemView.findViewById(R.id.tvTimestamp);
 
-            textPriority = itemView.findViewById(R.id.tvTextPriority);
+           // textPriority = itemView.findViewById(R.id.tvTextPriority);
             priority = itemView.findViewById(R.id.tvPriority);
 
-            textLongitude = itemView.findViewById(R.id.tvTextLongitude);
+           // textLongitude = itemView.findViewById(R.id.tvTextLongitude);
             longitude = itemView.findViewById(R.id.tvLongitude);
 
-            textLatitude = itemView.findViewById(R.id.tvTextLatitude);
+           // textLatitude = itemView.findViewById(R.id.tvTextLatitude);
             latitude = itemView.findViewById(R.id.tvLatitude);
 
             mClickListener = clickListener;
             itemView.setOnClickListener(this);
 
-            textAltitude = itemView.findViewById(R.id.tvTextAltitude);
+          //  textAltitude = itemView.findViewById(R.id.tvTextAltitude);
             altitude = itemView.findViewById(R.id.tvAltitude);
 
-            textAngle = itemView.findViewById(R.id.tvTextAngle);
+          //  textAngle = itemView.findViewById(R.id.tvTextAngle);
             angle = itemView.findViewById(R.id.tvAngle);
 
-            textSatellites = itemView.findViewById(R.id.tvTextSatellites);
+          //  textSatellites = itemView.findViewById(R.id.tvTextSatellites);
             satellites = itemView.findViewById(R.id.tvSatellites);
 
-            textKmh = itemView.findViewById(R.id.tvTextKmh);
+          //  textKmh = itemView.findViewById(R.id.tvTextKmh);
             kmh = itemView.findViewById(R.id.tvKmh);
 
-            textEventID = itemView.findViewById(R.id.tvTextEventID);
+           // textEventID = itemView.findViewById(R.id.tvTextEventID);
             eventid = itemView.findViewById(R.id.tvEventID);
 
-            textElementCount = itemView.findViewById(R.id.tvTextElementCount);
+           // textElementCount = itemView.findViewById(R.id.tvTextElementCount);
             elemCount = itemView.findViewById(R.id.tvElementCount);
-
 
 
         }
 
         @Override
         public void onClick(View v) {
-            mClickListener.onLocationClicked(getAdapterPosition());
+            mClickListener.onLocationClicked(markerLocation);
 
         }
 
     }
     public interface LocationListRecyclerClickListener {
-        void onLocationClicked(int position);
+        void onLocationClicked(LatLng markerLocation);
     }
 }

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.dominyko.avl.ElemParsers.Parser;
 import com.example.dominyko.avl.Models.GPS.AVL.AVLRecord;
 import com.example.dominyko.avl.TCP_Model.Server;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,15 +113,28 @@ public class MainActivity extends AppCompatActivity implements Parser.OnAvlJobDo
     }
 
     @Override
-    public void onLocationClicked(int position) {
-        Log.d("onLocationClicked","Longitude and Latitude");
-        Intent intent = new Intent(this, MapsActivity.class);
-        String latitude = intent.getExtras().getString("latitude");
-        intent.putExtra("Latitude",latitude);
-        String longitude = intent.getExtras().getString("longitude");
-        intent.putExtra("Longitude",longitude);
-        startActivity(intent);
-
+    public void onLocationClicked(LatLng markerLocation) {
+       // Log.e("locationOnClck",String.valueOf(markerLocation.latitude) + "   " + String.valueOf(markerLocation.longitude));
+        if(markerLocation != null){
+            Intent mapActivityIntent = new Intent(this,MapsActivity.class);
+            mapActivityIntent.putExtra(Constants.LAT_EXTRA_KEY,String.valueOf(markerLocation.latitude));
+            mapActivityIntent.putExtra(Constants.LNG_EXTRA_KEY,String.valueOf(markerLocation.longitude));
+            startActivity(mapActivityIntent);
+        } else {
+            Toast.makeText(this,"No location data",Toast.LENGTH_SHORT).show();
+        }
     }
+
+//    @Override
+//    public void onLocationClicked(int position) {
+//        Log.d("onLocationClicked","Longitude and Latitude");
+//        Intent intent = new Intent(this, MapsActivity.class);
+//        String latitude = intent.getExtras().getString("latitude");
+//        intent.putExtra("Latitude",latitude);
+//        String longitude = intent.getExtras().getString("longitude");
+//        intent.putExtra("Longitude",longitude);
+//        startActivity(intent);
+//
+//    }
 
 }
